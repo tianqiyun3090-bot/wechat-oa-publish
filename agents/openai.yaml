@@ -1,0 +1,4 @@
+interface:
+  display_name: "微信公众号图文助手"
+  short_description: "写公众号文章，用内置 ImageGen 制作封面，挂商品并保存草稿"
+  default_prompt: "使用 $wechat-oa-publish 制作一篇公众号图文，生成封面、挂默认商品，并保存到我的草稿箱。"

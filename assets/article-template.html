@@ -1,0 +1,48 @@
+<!-- 公众号图文正文模板（天启云AI 风格）
+     规则：全部内联样式、禁用 ol/li/ul、段首 text-indent:2em、行高 1.85、
+     正文 16px、小标题 border-left:5px solid #07c160。
+     商品卡占位符（下文 HTML 注释形式的那一行）会被 publish_draft.py
+     自动替换成微信官方商品卡 DOM，不要手写商品卡标签。
+     复制后逐段替换文字；按用户要求调整分节。 -->
+
+<section style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 16px; line-height: 1.85; color: #333333; letter-spacing: 0.5px; padding: 8px 4px;">
+
+  <!-- ① 痛点引入：用一句读者会问的原话开场 -->
+  <p style="text-indent: 2em; margin: 0 0 18px 0;">【这里放痛点：一句读者真实会问的话，例如"XX 我装上了，可我不会用，装了有啥用？"】</p>
+
+  <p style="text-indent: 2em; margin: 0 0 18px 0;">【展开一句：多数人的误解是什么。】</p>
+
+  <p style="text-indent: 2em; margin: 0 0 24px 0;">【转折：其实真正值钱的地方是……，不挑你会不会技术，只挑你有没有把话说清楚。】</p>
+
+  <!-- ② 核心结论卡 -->
+  <section style="background: #f0faf4; border: 1px solid #cdebd9; border-radius: 8px; padding: 16px 18px; margin: 0 0 26px 0;">
+    <p style="margin: 0; text-indent: 0; font-weight: bold; color: #0a7d43;">一句话结论：</p>
+    <p style="margin: 8px 0 0 0; text-indent: 0;">【一句话说清这篇要给你什么结果。】</p>
+  </section>
+
+  <!-- ③ 分步拆解：每步一个绿色左边框小标题 + 说明段落 -->
+  <h2 style="border-left: 5px solid #07c160; padding-left: 12px; font-size: 18px; line-height: 1.5; margin: 30px 0 16px 0; color: #222222;">第一步：XXXX</h2>
+  <p style="text-indent: 2em; margin: 0 0 24px 0;">【用大白话解释这一步怎么做。】</p>
+
+  <h2 style="border-left: 5px solid #07c160; padding-left: 12px; font-size: 18px; line-height: 1.5; margin: 30px 0 16px 0; color: #222222;">第二步：XXXX</h2>
+  <p style="text-indent: 2em; margin: 0 0 24px 0;">【这一段解释第二步怎么做。】</p>
+
+  <!-- ④ 适合人群卡 -->
+  <section style="background: #fff8ec; border-left: 4px solid #ffb300; border-radius: 6px; padding: 16px 18px; margin: 26px 0;">
+    <p style="margin: 0; text-indent: 0; font-weight: bold; color: #b26a00;">这几类人，用起来最划算：</p>
+    <p style="margin: 10px 0 0 0; text-indent: 0;">1. 【人群一】；</p>
+    <p style="margin: 6px 0 0 0; text-indent: 0;">2. 【人群二】；</p>
+    <p style="margin: 6px 0 0 0; text-indent: 0;">3. 【人群三】。</p>
+    <p style="margin: 10px 0 0 0; text-indent: 0;">【反向提醒：不要指望躺赚，它是干活的帮手。】</p>
+  </section>
+
+  <!-- ⑤ 商品卡引导（不挂商品时移除此段）+ 占位符（脚本自动替换） -->
+  <p style="text-indent: 2em; margin: 26px 0 18px 0;">如果你也想真正用起来，又卡在"不知道从哪开始"——</p>
+  <p style="text-indent: 2em; margin: 0 0 20px 0;">【根据用户材料介绍商品。商品名称从 config/defaults.json 获取，价格与服务内容以商品页面为准。】</p>
+
+  <!--PRODUCT_CARD-->
+
+  <!-- ⑥ 关注引导 -->
+  <p style="text-indent: 2em; margin: 24px 0 10px 0;">如果这篇对你有用，点个<strong>关注</strong>。我会继续把普通人也用得上的 AI 玩法，一篇一篇讲清楚。</p>
+
+</section>

@@ -1,0 +1,25 @@
+# 账号和临时凭据
+.env
+.env.*
+!.env.example
+wechat.env
+*.key
+*.pem
+config/local.json
+
+# 文章、签名商品卡、回执及生成素材不进入源码仓库
+outputs/
+output/
+articles/
+covers/
+work/
+wechat-output/
+*-receipt.json
+article-submitted.html
+article-saved.html
+
+# Python / OS
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
