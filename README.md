@@ -20,43 +20,36 @@
 
 这里的“挂商品”是插入已有商品的购买卡片；创建商品、调整价格库存和商品上下架仍在微信小店后台处理。
 
-## 使用流程
+## 和 Codex 对话安装
 
-```mermaid
-flowchart TD
-    A[告诉 Codex 主题、受众与目标] --> B[核对素材并生成文章 HTML]
-    B --> C{已有封面吗？}
-    C -->|没有| D[使用内置 ImageGen 生成封面]
-    C -->|有| E[检查并裁剪封面]
-    D --> E
-    E --> F[检查正文、封面和商品文案]
-    F --> G{本次要求保存草稿吗？}
-    G -->|只要预览| H[交付本地文件]
-    G -->|保存草稿| I[读取仓库外微信凭据]
-    I --> J[获取官方商品卡并上传封面]
-    J --> K[创建草稿并保存回执]
-    K --> L[回读核对草稿]
-    L --> M[交付文件、草稿 ID 和验证结果]
+1. 打开 Codex，进入一个可以操作本地文件的聊天。
+2. 把下面这段话复制给 Codex：
+
+```text
+帮我把这个 GitHub 仓库里的技能安装到我的 Codex 中：
+https://github.com/tianqiyun3090-bot/wechat-oa-publish
+
+技能名称是 wechat-oa-publish。请完成安装，检查是否安装成功，并告诉我如何使用。
+如果已经安装了旧版本，请先备份，再更新。
 ```
 
-## 安装到 Codex
+3. 等 Codex 确认安装成功后，发送下一条消息开始使用：
 
-在终端执行：
-
-```bash
-git clone https://github.com/tianqiyun3090-bot/wechat-oa-publish.git
-cd wechat-oa-publish
-python3 scripts/install_skill.py
+```text
+$wechat-oa-publish
+帮我写一篇关于Codex实用方向的公众号文章，先只生成正文预览，不上传。
 ```
 
-默认安装到 `$CODEX_HOME/skills/wechat-oa-publish`；未设置 `CODEX_HOME` 时为 `~/.codex/skills/wechat-oa-publish`。下一条 Codex 消息即可使用 `$wechat-oa-publish`。更新已有版本时：
+安装时不需要提供公众号密钥。先确认技能可用；需要保存到微信草稿箱时，再按下面的账号配置说明设置。
 
-```bash
-git pull --ff-only
-python3 scripts/install_skill.py --force
+以后想更新，也可以直接对 Codex 说：
+
+```text
+帮我把 wechat-oa-publish 技能更新到这个仓库的最新版本：
+https://github.com/tianqiyun3090-bot/wechat-oa-publish
+
+更新前备份旧版本，保留我在仓库之外配置的微信账号信息，并检查更新是否成功。
 ```
-
-`--force` 会先把旧版本备份到 skills 目录旁的 `skill-backups`，再安装新版本。仓库的 `.git` 和运行产物不会复制到技能目录。
 
 ## 直接对 Codex 说什么
 
