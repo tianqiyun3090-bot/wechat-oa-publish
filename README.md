@@ -90,6 +90,21 @@ $wechat-oa-publish
 
 只制作本地文章和封面时，无需配置微信账号。上传草稿时需要同一公众号的 AppID、AppSecret，以及对应的微信素材、草稿和商品卡权限。
 
+### 第一步：找到自己的 AppID 和 AppSecret
+
+打开官方入口：[微信开发者平台](https://developers.weixin.qq.com/platform/)。微信官方已将服务号的开发接口管理迁移到这里，AppID、AppSecret 和 API IP 白名单的具体入口可参考[官方升级说明](https://developers.weixin.qq.com/doc/service/guide/dev/migration.html)。
+
+1. **扫码登录。** 使用该公众号管理员的微信登录；已添加的开发者也可进入平台，具体操作以账号权限为准。
+2. **选择自己的公众号。** 在“我的业务”中找到要保存文章的公众号。服务号选择“服务号”并进入对应账号，确认名称正确，避免选成其他公众号或小程序。
+3. **复制 AppID。** 打开“基础信息”，找到“开发者ID（AppID）”，复制它。
+4. **获取 AppSecret。** 在“基础信息 → 开发密钥”找到“开发者密钥（AppSecret）”。如果已经保存过有效密钥，直接使用；首次使用按页面提示启用，忘记密钥时按提示重置，完成所需的身份验证后保存新密钥。
+
+**重置密钥会影响使用旧密钥的其他程序。** 重置前先确认，完成后同步更新相关程序的配置；不要把 AppSecret 发到公开聊天、截图或 GitHub 中。
+
+如果看不到自己的公众号，先确认扫码微信是否为管理员或已添加的开发者，必要时联系管理员添加权限。
+
+### 第二步：把凭据填入本地配置
+
 将账号文件放在源码仓库之外：
 
 ```bash
@@ -105,9 +120,17 @@ WECHAT_APPID=your_wechat_appid
 WECHAT_SECRET=your_wechat_appsecret
 ```
 
-不要将真实密钥放进 `config/defaults.json`、`SKILL.md` 或 README。仓库只包含配置示例，没有真实账号凭据。公众号后台若要求 IP 白名单，按微信错误中返回的实际出口 IP 配置。
+`WECHAT_APPID` 填刚复制的 AppID，`WECHAT_SECRET` 填与它属于同一个公众号的 AppSecret。
+
+不要将真实密钥放进 `config/defaults.json`、`SKILL.md` 或 README。仓库只包含配置示例，没有真实账号凭据。
 
 脚本也支持当前进程的 `WECHAT_APPID`、`WECHAT_SECRET`。账号优先级为 **命令行参数 → 环境变量 → 仓库外账号文件**。为了兼容原版，新的默认配置文件不存在时，会尝试 `~/.workbuddy/wechat.env`。更多细节见 [`references/account-setup.md`](references/account-setup.md)。
+
+### 第三步：需要时配置 API IP 白名单
+
+如果保存草稿时报“IP 不在白名单”或微信错误码 `40164`，回到 **微信开发者平台 → 我的业务 → 对应服务号 → 基础信息 → 开发密钥 → API IP 白名单**，添加微信错误中返回的实际出口 IP，按页面提示完成验证，然后再让 Codex 尝试保存草稿。
+
+文章草稿仍在[微信公众号后台](https://mp.weixin.qq.com)的“内容管理 → 草稿箱”查看。
 
 ## 如何保存自己的默认商品
 
